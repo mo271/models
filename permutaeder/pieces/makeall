@@ -1,0 +1,6 @@
+for((i=0;i<16;i++))
+do
+echo -e "getnum=$i;\n$(cat genall.scad)" >tmp.scad
+openscad -o p$i.stl tmp.scad
+rm tmp.scad
+done
