@@ -2,7 +2,7 @@
 // 3D Model: Spherical Cap for Cylindrical Stick
 // ----------------------------------------
 // Description: Creates a cap with a spherical outer shape and
-//              a cylindrical inner cavity, closed at one end.
+//              a cylindrical + cone inner cavity, closed at one end.
 
 // --- User Defined Parameters ---
 
@@ -13,11 +13,15 @@ stick_diameter = 27.5;
 sphere_diameter = 44;
 
 // How far the cap should cover the stick length (inner cavity depth) (in mm)
-cap_inner_depth = 23;
+cap_inner_depth = 26;
+
+
+// The height of the cone placed on top of the cylindrical inner cavity
+cone_height = 8;
 
 // Thickness of the material at the very top (closed end) of the inner cavity,
 // measured inwards from the sphere's surface along the Z-axis. (in mm)
-top_thickness = 8;
+top_thickness = 10;
 
 
 // --- Calculated Parameters --- (Do not change these directly)
@@ -36,12 +40,8 @@ if (inner_radius > sqrt(pow(sphere_radius, 2) - pow(cavity_base_z, 2))) {
 
 
 // --- Model Resolution ---
-// $fn defines the number of facets used to approximate curves.
-// Higher numbers mean smoother curves but slower rendering & larger files.
-$fn = 100;
+$fn = 200;
 
-
-// --- Main Cap Generation ---
 
 // We use difference() to subtract the cavity from the main shape.
 difference() {
@@ -56,15 +56,22 @@ difference() {
         // A large box positioned to keep everything at or above cavity_base_z
         large_dim = sphere_diameter * 4; // Make sure box is wider than sphere
         // Box starts at cavity_base_z and goes upwards well beyond the sphere top
-        box_height = sphere_radius - cavity_base_z + 20; // Height from base to sphere top + buffer
+        box_height = sphere_radius - cavity_base_z ; // Height from base to sphere top + buffer
         translate([ -large_dim/2, -large_dim/2, cavity_base_z]) // Position bottom-corner
             cube([large_dim, large_dim, box_height]);
     }
 
-    // 2. Create the inner cylindrical cavity to be subtracted.
+    // 2. Create the inner cylindrical +cone cavity to be subtracted.
     // It starts at the flat base (cavity_base_z) and goes up by cap_inner_depth.
     // We make it slightly taller (+1mm) to ensure a clean boolean operation.
-    translate([0, 0, cavity_base_z]) {
-        cylinder(h = cap_inner_depth , r = inner_radius, center = false);
+    union() {
+        translate([0, 0, cavity_base_z]) {
+            cylinder(h = cap_inner_depth + 1, r = inner_radius, center = false);
+        }
+
+        translate([0, 0, cavity_base_z + (cap_inner_depth) + 1]) {
+            cylinder(h = cone_height, r1 = inner_radius, r2 = 0, center = false);
+        }
     }
+
 }
