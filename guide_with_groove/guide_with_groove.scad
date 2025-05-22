@@ -73,17 +73,17 @@ wide_groove_section_x_start = (main_length / 2) - (wide_groove_section_actual_le
 wide_groove_section_y_offset = (main_width - wide_groove_section_actual_width) / 2;
 
 // Cylinder Properties
-cylinder_height_protrusion = 7;
+cylinder_height_protrusion = 8.4;
 cylinder_base_diameter = 7.5;
 cylinder_base_radius = cylinder_base_diameter / 2;
 cylinder_top_diameter = 8;
 cylinder_top_radius = cylinder_top_diameter / 2;
-cylinder_x_offset_from_center = 80;
+cylinder_x_offset_from_center = 80.3;
 
 // Slot Properties
 slot_length = 7.4;
 slot_width  = 1.0;
-slot_depth  = 5.0; // User adapted
+slot_depth  = 8.4; 
 
 // Calculations for Cylinder Positioning
 cyl1_x_local = (main_length / 2) - cylinder_x_offset_from_center;
@@ -96,8 +96,7 @@ cylinder_smoothness = 100;
 
 
 // --- Create the Model ---
-rotate([-45, 0, 0]){
-
+rotate([180, 0,0]){
 translate([-main_length/2, -main_width/2, -main_height/2]) { // Global centering
     union() {
         // 1. The main body (cuboid with groove and BOTTOM chamfers)
