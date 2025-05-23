@@ -4,10 +4,10 @@
 
 // --- Customizable Parameters ---
 
-adapter_inner_diameter_saw = 43;    // Adapter's inner diameter to fit OVER the 43mm saw port
+adapter_inner_diameter_saw = 43.5;    // Adapter's inner diameter to fit OVER the 43mm saw port
 saw_side_adapter_length = 22;   // Length of the adapter section for the saw port
 
-adapter_inner_diameter_vacuum = 44.4; // Adapter's inner diameter to fit OVER the 44.4mm vacuum port
+adapter_inner_diameter_vacuum = 45.1; // Adapter's inner diameter to fit OVER the 44.4mm vacuum port
 vacuum_side_adapter_length = 35;  // Length of the adapter section for the vacuum port
 
 // Adapter Construction
