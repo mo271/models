@@ -7,21 +7,21 @@
 // --- User Defined Parameters ---
 
 // Diameter of the stick the cap should fit onto (in mm)
-stick_diameter = 27.5;
+stick_diameter = 22.3575;
 
 // Outer diameter of the SPHERE (in mm)
-sphere_diameter = 44;
+sphere_diameter = 35.772;
 
 // How far the cap should cover the stick length (inner cavity depth) (in mm)
-cap_inner_depth = 26;
+cap_inner_depth = 21.138;
 
 
 // The height of the cone placed on top of the cylindrical inner cavity
-cone_height = 8;
+cone_height = 6.5;
 
 // Thickness of the material at the very top (closed end) of the inner cavity,
 // measured inwards from the sphere's surface along the Z-axis. (in mm)
-top_thickness = 10;
+top_thickness = 8.13;
 
 
 // --- Calculated Parameters --- (Do not change these directly)
@@ -40,7 +40,7 @@ if (inner_radius > sqrt(pow(sphere_radius, 2) - pow(cavity_base_z, 2))) {
 
 
 // --- Model Resolution ---
-$fn = 200;
+$fn = 150;
 
 
 // We use difference() to subtract the cavity from the main shape.

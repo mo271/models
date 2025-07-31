@@ -4,7 +4,7 @@
 
 // --- Customizable Parameters ---
 
-adapter_inner_diameter_saw = 43.5;    // Adapter's inner diameter to fit OVER the 43mm saw port
+adapter_inner_diameter_saw = 37.16;    // Adapter's inner diameter to fit OVER the 43mm saw port
 saw_side_adapter_length = 22;   // Length of the adapter section for the saw port
 
 adapter_inner_diameter_vacuum = 45.1; // Adapter's inner diameter to fit OVER the 44.4mm vacuum port
@@ -26,7 +26,7 @@ adapter_outer_diameter = adapter_inner_diameter_vacuum + (2 * min_wall_thickness
 adapter_total_length = saw_side_adapter_length + vacuum_side_adapter_length;
 
 // A small value to ensure boolean subtractions work correctly (prevents z-fighting)
-epsilon = 0.015; 
+epsilon = 0.025; 
 
 // --- Module to create the stepped adapter ---
 module stepped_adapter_no_overhang() {
